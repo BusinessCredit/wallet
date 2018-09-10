@@ -2,14 +2,18 @@
 
 ### Dev
 
-- Ensure env
+#### Ensure env
+```
 node
 npm/yarn
 react-native
+```
 
-- Simulation/Publish Env
+#### Simulation/Publish Env
+```
 xcode
 adk
+```
 
 ### Run
 
