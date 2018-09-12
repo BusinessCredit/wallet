@@ -44,13 +44,13 @@ class ImportWallet extends Component {
 				res.localLanguage.includes('zh')
 					? this.setState({
 							service_source: {
-								uri: 'https://qiniu.baixiaojian.com/True_Chain_Wallet_Terms_of_Service_zh.pdf',
+								uri: 'https://github.com/BusinessCredit/BCAC_Wallet_Terms_of_Service/raw/master/BCAC_Wallet_Terms_of_Service_zh.pdf',
 								cache: true
 							}
 						})
 					: this.setState({
 							service_source: {
-								uri: 'https://qiniu.baixiaojian.com/True_Chain_Wallet_Terms_of_Service_en.pdf',
+								uri: 'https://github.com/BusinessCredit/BCAC_Wallet_Terms_of_Service/raw/master/BCAC_Wallet_Terms_of_Service_en.pdf',
 								cache: true
 							}
 						});
@@ -59,13 +59,13 @@ class ImportWallet extends Component {
 				DeviceInfo.default.getDeviceLocale().includes('zh')
 					? this.setState({
 							service_source: {
-								uri: 'https://qiniu.baixiaojian.com/True_Chain_Wallet_Terms_of_Service_zh.pdf',
+								uri: 'https://github.com/BusinessCredit/BCAC_Wallet_Terms_of_Service/raw/master/BCAC_Wallet_Terms_of_Service_zh.pdf',
 								cache: true
 							}
 						})
 					: this.setState({
 							service_source: {
-								uri: 'https://qiniu.baixiaojian.com/True_Chain_Wallet_Terms_of_Service_en.pdf',
+								uri: 'https://github.com/BusinessCredit/BCAC_Wallet_Terms_of_Service/raw/master/BCAC_Wallet_Terms_of_Service_en.pdf',
 								cache: true
 							}
 						});
