@@ -23,7 +23,7 @@ export default {
 		agreeTerm: 'Agree to the terms of service',
 		createWalletTipOfPwd: 'Strong password is needed to encrypt private key！',
 		createWalletTipOfNoStore:
-			'Do remember your password! True wallet will not store and cannot find back your password！',
+			'Do remember your password! BCAC wallet will not store and cannot find back your password！',
 		iAgreeTerm: 'I have read carefully and agree to the above agreement',
 		term: 'Service and privacy terms',
 		mnemonicTip: 'No blank is allowed at the beginning or end of the mnemonic tip, please enter again',
@@ -84,14 +84,10 @@ export default {
 				multi_language: 'Multi language',
 				changeToChinese: '简体中文',
 				changeToEnglish: 'English',
-				changeToThai: 'ไทย',
-				changeToJp: '日本語',
-				changeToVi: '越南语',
-				changeToVi: 'Người việt nam'
 			}
 		},
 		version: {
-			_newVersion: 'Find True',
+			_newVersion: 'Find BCAC Wallet',
 			_version: 'version',
 			upgradeNow: 'Upgrade Now',
 			noEscalation: 'No upgrade',
@@ -183,14 +179,6 @@ export default {
 			standNode_title: 'Standard node'
 		},
 		standNodeRank: 'Standard node ranking',
-		signUp_item: {
-			fullNode: 'Full Node(POW+PBFT)',
-			fullNode_info:
-				'Full nodes are POW+PBFT nodes, also called master nodes.Master nodes will automatically execute POW mission without being selected as the PBFT committee member.Master nodes need to meet certain criteria of hash power, but have free passage.Individual needs to lock 50, 000TRUE to compete for master nodes; team need to lock 100, 000TRUE to compete for master nodes',
-			standNode: 'Standard Node (POW)',
-			standNode_info:
-				'Standard nodes are POW nodes, they are limitless in numbers after the beta period of main net.They only execute POW mission and have free passage.Individual needs to lock 2, 000 TRUE to compete for standard nodes; team need to lock 3, 000 TRUE to compete for standard nodes.'
-		},
 		personSignUp: {
 			personSignUp_Info: 'Personal information',
 			personSignUp_title: 'Personal registration'
@@ -209,13 +197,6 @@ export default {
 			reason: 'Reason',
 			_success: 'Successful application submission',
 			_success_info: 'The application has been submitted successfully, please wait for the captain to handle!'
-		},
-		InsufficientQualification: {
-			qu_1:
-				'Sorry, you don’t have 2,000 TRUE in lock account and can’t register for election as an individual at this time. ',
-			qu_2:
-				'Sorry, you don’t have 50,000 TRUE in lock account and can’t register for election as an individual at this time. ',
-			qu_3: 'At least 1 TRUE is required to create a team'
 		},
 		application: {
 			_success: 'The application has been approved. Please proceed to the next step.',

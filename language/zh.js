@@ -20,7 +20,7 @@ export default {
 		pwdIsWrong: '两次密码不一致',
 		agreeTerm: '请同意服务及隐私条款',
 		createWalletTipOfPwd: '密码用于加密私钥，强度非常重要！',
-		createWalletTipOfNoStore: 'True钱包不会储存密码，也无法帮您找回，请务必牢记！',
+		createWalletTipOfNoStore: 'BCAC钱包不会储存密码，也无法帮您找回，请务必牢记！',
 		iAgreeTerm: '我已仔细阅读并同意',
 		term: '服务及隐私条款',
 		mnemonicTip: '助记词首尾不能有空格,请重新输入',
@@ -80,13 +80,10 @@ export default {
 				multi_language: '多语言',
 				changeToChinese: '简体中文',
 				changeToEnglish: 'English',
-				changeToThai: 'ไทย',
-				changeToJp: '日本語',
-				changeToVi: 'Người việt nam'
 			}
 		},
 		version: {
-			_newVersion: '发现True',
+			_newVersion: '发现BCAC钱包',
 			_version: '版本',
 			upgradeNow: '立即升级',
 			noEscalation: '暂不升级',
@@ -170,13 +167,6 @@ export default {
 			standNode_title: '标准节点'
 		},
 		standNodeRank: '标准节点排行',
-		signUp_item: {
-			fullNode: '全节点 (POW+PBFT节点)',
-			fullNode_info:
-				'全节点即POW+PBFT节点，也被称为MasterNode：全节点在未进入PBFT Committee委员会的情况下，会自动执行POW节点任务，全节点需要具备相应的算力要求。个人竞选需要不少于5万TRUE，并执行锁仓；组队竞选需要不少于10万TRUE，并执行锁仓。',
-			standNode: '标准节点 (POW节点)',
-			standNode_info: '标准节点即POW节点,主网测试期结束后将无节点数量限制,仅执行POW节点任务。个人竞选需要2千TRUE,并执行锁仓;组队竞选需要3千TRUE,并执行锁仓。'
-		},
 		personSignUp: {
 			personSignUp_Info: '个人信息',
 			personSignUp_title: '个人报名'
@@ -195,11 +185,6 @@ export default {
 			reason: '申请理由',
 			_success: '申请提交成功',
 			_success_info: '申请已提交成功，请等待队长处理！'
-		},
-		InsufficientQualification: {
-			qu_1: '个人报名标准节点需要不少于2千TRUE',
-			qu_2: '个人报名全节点需要不少于5万TRUE',
-			qu_3: '创建组队需要不少于1TRUE'
 		},
 		application: {
 			_success: '申请已通过，请进行下一步操作',
