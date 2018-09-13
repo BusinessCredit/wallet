@@ -23,7 +23,7 @@ export default {
 		agreeTerm: 'Agree to the terms of service',
 		createWalletTipOfPwd: 'Strong password is needed to encrypt private key！',
 		createWalletTipOfNoStore:
-			'Do remember your password! True wallet will not store and cannot find back your password！',
+			'Do remember your password! BCAC wallet will not store and cannot find back your password！',
 		iAgreeTerm: 'I have read carefully and agree to the above agreement',
 		term: 'Service and privacy terms',
 		mnemonicTip: 'No blank is allowed at the beginning or end of the mnemonic tip, please enter again',
@@ -91,7 +91,7 @@ export default {
 			}
 		},
 		version: {
-			_newVersion: 'Find True',
+			_newVersion: 'Find BCAC Wallet',
 			_version: 'version',
 			upgradeNow: 'Upgrade Now',
 			noEscalation: 'No upgrade',

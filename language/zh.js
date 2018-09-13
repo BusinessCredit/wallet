@@ -20,7 +20,7 @@ export default {
 		pwdIsWrong: '两次密码不一致',
 		agreeTerm: '请同意服务及隐私条款',
 		createWalletTipOfPwd: '密码用于加密私钥，强度非常重要！',
-		createWalletTipOfNoStore: 'True钱包不会储存密码，也无法帮您找回，请务必牢记！',
+		createWalletTipOfNoStore: 'BCAC钱包不会储存密码，也无法帮您找回，请务必牢记！',
 		iAgreeTerm: '我已仔细阅读并同意',
 		term: '服务及隐私条款',
 		mnemonicTip: '助记词首尾不能有空格,请重新输入',
@@ -86,7 +86,7 @@ export default {
 			}
 		},
 		version: {
-			_newVersion: '发现True',
+			_newVersion: '发现BCAC钱包',
 			_version: '版本',
 			upgradeNow: '立即升级',
 			noEscalation: '暂不升级',
