@@ -4,8 +4,6 @@ let actions = {
             dispatch({
                 type: 'WALLETINFO',
                 eth_banlance: option.eth_banlance,
-                // true_banlance: option.true_banlance,
-                // ttr_banlance: option.ttr_banlance,
                 bcac_balance: option.bcac_balance,
                 wallet_address: option.wallet_address
             })

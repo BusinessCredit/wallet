@@ -36,9 +36,17 @@ import KnowledgePoint from '../components/my/knowledgePoint';
 import WebSetting from '../components/my/webSetting';
 import QRscanner from '../components/public/QRscanner';
 
+import LockToken from '../components/lock-token/lock-token'
+import Node from '../components/node/node'
+import WatchAddress from '../components/lock-token/watchAddress'
+
 //rely
 import Storage from 'react-native-storage';
 import Icon from '../pages/iconSets';
+import MaterialCommunityIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+
+//lock-pattern
+
 
 const storage = new Storage({
 	size: 1000,
@@ -79,21 +87,15 @@ function check(host) {
 	if (host.includes('ropsten')) {
 		store.dispatch({
 			type: 'CONTRACTADDR',
-			// TRUEContractAddr: '0x2792d677B7Ba6B7072bd2293F64BC0C1CDe23ac1',
-			// TTRContractAddr: '0x635AfeB8739f908A37b3d312cB4958CB2033F456',
 		});
 	} else if(host.includes('rinkeby')){
 		store.dispatch({
 			type: 'CONTRACTADDR',
-			// TRUEContractAddr: '0x2792d677B7Ba6B7072bd2293F64BC0C1CDe23ac1',
-			// TTRContractAddr: '0x635AfeB8739f908A37b3d312cB4958CB2033F456',
 			BCACContractAddr: '0x87d6303da6886515cbe242aeb43132216310b150',
 		});
 	}else {
 		store.dispatch({
 			type: 'CONTRACTADDR',
-			// TRUEContractAddr: '0xa4d17ab1ee0efdd23edc2869e7ba96b89eecf9ab',
-			// TTRContractAddr: '0xf2bb016e8c9c8975654dcd62f318323a8a79d48e',
 			BCACContractAddr: '0xe36df5bb57e80629cfc28a31e5f794071c085eca',
 		});
 	}
@@ -112,26 +114,6 @@ storage
 	.catch((e) => {
 		check('https://mainnet.infura.io/');
 	});
-
-// const Node = createStackNavigator({
-// 	Node: {
-// 		screen: Node_item,
-// 		navigationOptions: () => ({
-// 			title: I18n.t('tab.node'),
-// 			headerBackTitle: null,
-// 			headerStyle: {
-// 				backgroundColor: '#528bf7',
-// 				borderBottomWidth: 0
-// 			},
-// 			headerTitleStyle: {
-// 				color: '#fff',
-// 				fontSize: 18
-// 			},
-// 			headerTintColor: '#000',
-// 			borderWidth: 0
-// 		})
-// 	}
-// });
 
 const My = createStackNavigator({
 	My: {
@@ -161,6 +143,24 @@ const TabBarPage = createBottomTabNavigator(
 					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('tab.assets')}</Text>
 				),
 				tabBarIcon: ({ focused, tintColor }) => <Icon name="icon-zichan" size={30} color={tintColor} />
+			}
+		},
+		Lock: {
+			screen: LockToken,
+			navigationOptions: {
+				tabBarLabel: ({ tintColor, focused }) => (
+					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('lock.lock')}</Text>
+				),
+				tabBarIcon: ({ focused, tintColor }) => <Icon name="icon-suoding" size={22} color={tintColor} />
+			}
+		},
+		Node: {
+			screen: Node,
+			navigationOptions: {
+				tabBarLabel: ({ tintColor, focused }) => (
+					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('tab.node')}</Text>
+				),
+				tabBarIcon: ({ focused, tintColor }) => <MaterialCommunityIcon name="lock-pattern" size={22} color={tintColor} />
 			}
 		},
 		My: {
@@ -279,6 +279,12 @@ const App = createStackNavigator(
 			screen: SysSet,
 			navigationOptions: {
 				headerTitle: () => <Text> {I18n.t('my.sysSetting._title')}</Text>
+			}
+		},
+		WatchAddress: {
+			screen: WatchAddress,
+			navigationOptions: {
+				headerTitle: () => <Text> {I18n.t('lock.watchAddress.addressManager')}</Text>
 			}
 		},
 		// Login: {

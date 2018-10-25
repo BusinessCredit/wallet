@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		003D58890B774A98B95D4B38 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38E20A7391D847FEA35E6B26 /* Octicons.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -14,7 +15,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* BCACWalletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BCACWalletTests.m */; };
 		00F5396A28454F70A0942B85 /* libRNRandomBytes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FA1CA8B1C9046D593487509 /* libRNRandomBytes.a */; };
-		0E3FE914213F7AF500B10078 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E3FE913213F7AF500B10078 /* iconfont.ttf */; };
+		0E2211F12179764200F3FB77 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2211F02179764200F3FB77 /* iconfont.ttf */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		136AC4E83F9845F393DB678F /* libTcpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70BFC0A651E6450FA1F6559A /* libTcpSockets.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -484,7 +485,7 @@
 		07B2359760F149F6BF925158 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		084E9097CA774CD09C632F92 /* RCTRestart.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTRestart.xcodeproj; path = "../node_modules/react-native-restart/ios/RCTRestart.xcodeproj"; sourceTree = "<group>"; };
 		0E0841589D33413686BEA780 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		0E3FE913213F7AF500B10078 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = iconfont.ttf; path = ../app/assets/iconfont/iconfont.ttf; sourceTree = "<group>"; };
+		0E2211F02179764200F3FB77 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = iconfont.ttf; path = ../app/assets/iconfont/iconfont.ttf; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* BCACWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BCACWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -890,7 +891,7 @@
 				59EBDA3AF2904F08A04F9048 /* Feather.ttf */,
 				FBB140AAE49D47D49700DC96 /* FontAwesome.ttf */,
 				0E0841589D33413686BEA780 /* Foundation.ttf */,
-				0E3FE913213F7AF500B10078 /* iconfont.ttf */,
+				0E2211F02179764200F3FB77 /* iconfont.ttf */,
 				83E0D9AFBAF4487FBCF57316 /* Ionicons.ttf */,
 				27BC117EFA8747EAA3326AF9 /* MaterialCommunityIcons.ttf */,
 				86ED7023027643C0AC6F62F5 /* MaterialIcons.ttf */,
@@ -1625,7 +1626,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				0E3FE914213F7AF500B10078 /* iconfont.ttf in Resources */,
+				0E2211F12179764200F3FB77 /* iconfont.ttf in Resources */,
 				65047C2942E24A2BA0545D88 /* Entypo.ttf in Resources */,
 				2624A1CC340E420888CD4F4A /* EvilIcons.ttf in Resources */,
 				4CA6A6D8A406493DA8048ED7 /* Feather.ttf in Resources */,

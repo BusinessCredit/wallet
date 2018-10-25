@@ -62,8 +62,6 @@ class Assets extends Component {
 			walletName: ' ',
 			walletAddress: ' ',
 			eth_banlance: 0,
-			// true_banlance: 0,
-			// ttr_banlance: 0,
 			bcac_balance: 0,
 			lock_num: 0,
 			newVersion: '--',
@@ -108,24 +106,6 @@ class Assets extends Component {
 				this.setState({ bcac_balance });
 			}
 		);
-		// getBalance(
-		// 	iterface,
-		// 	this.state.walletAddress,
-		// 	store.getState().contractAddr.TRUEContractAddr,
-		// 	(true_banlance) => {
-		// 		true_banlance = this.show(true_banlance);
-		// 		this.setState({ true_banlance });
-		// 	}
-		// );
-		// getBalance(
-		// 	iterface,
-		// 	this.state.walletAddress,
-		// 	store.getState().contractAddr.TTRContractAddr,
-		// 	(ttr_banlance) => {
-		// 		ttr_banlance = this.show(ttr_banlance);
-		// 		this.setState({ ttr_banlance });
-		// 	}
-		// );
 		this.updataWalletName();
 
 		setTimeout(() => {
@@ -196,8 +176,6 @@ class Assets extends Component {
 		this.props.walletInfo({
 			wallet_address: this.state.walletAddress,
 			eth_banlance: this.state.eth_banlance,
-			// true_banlance: this.state.true_banlance,
-			// ttr_banlance: this.state.ttr_banlance,
 			bcac_balance: this.state.bcac_balance,
 		});
 	}
@@ -209,16 +187,6 @@ class Assets extends Component {
 				balance: this.state.eth_banlance,
 				logo_url: require('../../assets/images/currency_logo/eth_logo.png')
 			},
-			// {
-			// 	currency_name: 'TRUE',
-			// 	balance: this.state.true_banlance,
-			// 	logo_url: require('../../assets/images/currency_logo/true_logo.png')
-			// },
-			// {
-			// 	currency_name: 'TTR',
-			// 	balance: this.state.ttr_banlance,
-			// 	logo_url: require('../../assets/images/currency_logo/ttr_logo.png')
-			// },
 			{
 				currency_name: 'BCAC',
 				balance: this.state.bcac_balance,

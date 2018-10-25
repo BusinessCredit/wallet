@@ -189,6 +189,10 @@ class Transfer extends Component {
 			this.setState({
 				ContractAddr: store.getState().contractAddr[ContractAddr]
 			});
+
+			if(params.toAddress){
+				this.setState({toAddress: params.toAddress, toAddressFlag: true})
+			}
 		}
 	}
 
