@@ -4,6 +4,14 @@ import { withNavigation } from 'react-navigation';
 
 const versionData = [
 	{
+		version: '1.2.0',
+		con: ['支持锁仓查询','集成节点系统']
+	},
+	{
+		version: '1.1.0',
+		con: ['BUG修复']
+	},
+	{
 		version: '1.0.1',
 		con: ['修正一些问题']
 	},

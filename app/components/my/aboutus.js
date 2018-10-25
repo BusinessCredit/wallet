@@ -3,7 +3,6 @@ import { Text, View, Image, StyleSheet, TouchableHighlight, Modal, Alert, Linkin
 import { I18n } from '../../../language/i18n';
 import { withNavigation } from 'react-navigation';
 import Icon from '../../pages/iconSets';
-import { checkVersion } from '../../api/index';
 var DeviceInfo = require('react-native-device-info');
 
 export class AboutUs extends Component {
@@ -50,24 +49,6 @@ export class AboutUs extends Component {
 								cache: true
 							}
 						});
-			});
-	}
-
-	_checkVersion() {
-		checkVersion()
-			.then((result) => {
-				return result.data.data;
-			})
-			.then((res) => {
-				this.setState({
-					newVersion: res.version
-				});
-				let ver_new = res.version.replace(/\./g, '');
-				if (ver_new > this.state.currentVersion) {
-					this.setState({ modalVisible: true });
-				} else {
-					Alert.alert(null, I18n.t('my.version.noUpdate'));
-				}
 			});
 	}
 
