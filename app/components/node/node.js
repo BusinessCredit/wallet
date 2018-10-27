@@ -25,7 +25,7 @@ class NodeWebView extends Component {
         <WebView
           onLoad={() => this.hideSpinner()}
           style={styles.webview}
-          source={{ uri: "http://node.taoyl.vip" }}
+          source={{ uri: "https://www.bapuwind.com" }}
         />
       </View>
     );
