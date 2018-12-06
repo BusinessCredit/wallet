@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+checkVersionUrl = "http://www.bcachain.org/release.json"
+
 //获取eth交易记录
 const getTransactionRecord = (walletAddress, contractaddress) => {
 	if (host.includes('rinkeby')) {
@@ -38,4 +40,10 @@ const getERC20TransactionRecord = (walletAddress, contractaddress) => {
 	}
 };
 
-export { getTransactionRecord, getERC20TransactionRecord };
+const checkVersion = () => {
+	var config = {	headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}};
+	console.log("check version")
+	return axios.get(checkVersionUrl, config);
+};
+
+export { getTransactionRecord, getERC20TransactionRecord, checkVersion };

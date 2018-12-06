@@ -2,13 +2,13 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
         // implementation()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
+        jcenter()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
@@ -22,8 +22,8 @@ buildscript {
 allprojects {
     repositories {
         mavenLocal()
-        jcenter()
         google()
+        jcenter()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
@@ -37,12 +37,20 @@ allprojects {
 
 subprojects {
   project.configurations.all {
-     resolutionStrategy.eachDependency { details ->
-        if (details.requested.group == 'com.android.support'
-              && !details.requested.name.contains('multidex') ) {
-           details.useVersion "26.1.0"
+    //  resolutionStrategy.eachDependency { details ->
+    //     if (details.requested.group == 'com.android.support'
+    //           && !details.requested.name.contains('multidex') ) {
+    //        details.useVersion "26.1.0"
+    //     }
+    //  }
+    afterEvaluate {project ->
+        if (project.hasProperty("android")) {
+            android {
+                compileSdkVersion 26
+                buildToolsVersion '26.0.2'
+            }
         }
-     }
+    }
   }
 }
 

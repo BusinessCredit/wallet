@@ -34,7 +34,7 @@ export default {
 	},
 	tab: {
 		assets: '资产',
-		node: '节点',
+		dapp: '应用',
 		my: '我的'
 	},
 	my: {
@@ -90,7 +90,11 @@ export default {
 			noEscalation: '暂不升级',
 			noUpdate: '当前已是最新版本，无需更新'
 		},
-		webHost: 'Web3 设置'
+		webHost: 'Web3 设置',
+		webSetting: {
+			nodeURL: "Web3节点服务地址",
+			predefinedURL: "选择预定义的Web3节点服务地址"
+		}
 	},
 	assets: {
 		totalAssets: '账户总资产',
@@ -143,6 +147,7 @@ export default {
 		},
 		transfer: {
 			checkAddress: '地址无效，请仔细检查！',
+			checkBalance: '无效的金额，请确保金额是数字或者有足够的额度',
 			transferInAddress: '转入地址',
 			transferOutAddress: '转出地址'
 		}
@@ -200,6 +205,8 @@ export default {
 		next: '下一步',
 		back: '返回',
 		save: '保存',
+		exit: '退出',
+		doubleReturn: '再按一次返回键退出应用',
 		payDetail: '支付详情',
 		enterPassword: '输入密码',
 		transferOutPrompt: '优先节点投票期间暂不提供转出功能!',

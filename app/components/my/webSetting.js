@@ -56,7 +56,8 @@ class WebSetting extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text>WALLET SERVICE URL</Text>
+				<Text>{I18n.t('my.webSetting.nodeURL')}</Text>
+
 				<TextInput
 					style={{ height: 50, borderBottomWidth: 1, borderColor: '#ccc' }}
 					placeholder={this.state.url}
@@ -67,6 +68,25 @@ class WebSetting extends Component {
 						});
 					}}
 				/>
+				<Text style={styles.url_title}>
+					{I18n.t('my.webSetting.predefinedURL')}
+				</Text>
+				<Text
+					style={styles.url_item}
+					onPress={() => {
+						this.setState({ url: "https://mainnet.infura.io" })
+					}}
+				>
+					https://mainnet.infura.io
+			</Text>
+				<Text
+					style={styles.url_item}
+					onPress={() => {
+						this.setState({ url: "http://118.190.120.63" })
+					}}
+				>
+					http://118.190.120.63
+				</Text>
 			</View>
 		);
 	}
@@ -79,5 +99,25 @@ const styles = StyleSheet.create({
 		flex: 1,
 		padding: 20,
 		backgroundColor: '#fff'
+	},
+	url_title: {
+		marginTop: 40,
+		height: 50,
+		lineHeight: 50,
+	},
+	url_item: {
+		height: 50,
+		lineHeight: 50,
+		textAlign: 'left',
+		width: Dimensions.get('window').width
 	}
 });
+
+
+// <Picker
+// selectedValue={this.state.language}
+// style={{ height: 50, width: 100 }}
+// onValueChange={(itemValue, itemIndex) => this.setState({ language: itemValue })}>
+// <Picker.Item label="Java" value="java" />
+// <Picker.Item label="JavaScript" value="js" />
+// </Picker>

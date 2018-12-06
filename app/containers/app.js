@@ -1,7 +1,7 @@
 import React from 'react';
 import { I18n } from '../../language/i18n'; // 多国语言支持
 import { StyleSheet, Text, AsyncStorage } from 'react-native';
-import { createStackNavigator, createBottomTabNavigator, StackNavigator } from 'react-navigation'; // 页面切换 路由导航组件
+import { createStackNavigator, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation'; // 页面切换 路由导航组件
 // import { host } from '../utils/config';
 
 //TabBar 底部栏位页面
@@ -25,11 +25,6 @@ import Versions from '../components/my/versions';
 import SysSet from '../components/my/sysset';
 import HelperCenter from '../components/my/helpercenter';
 import ContactUs from '../components/my/contactus';
-// import Login from '../components/my/login';
-// import Lockpositon from '../components/public/lockpositon';
-// import LockAccount from '../components/my/lockAccount';
-// import LogOut from '../components/my/logOut';
-import SetGesturePassword from '../components/my/setgesturepassword';
 import SysLanguage from '../components/my/sysLanguage';
 import TransactionRecord from '../components/my/transactionRecord';
 import KnowledgePoint from '../components/my/knowledgePoint';
@@ -37,8 +32,11 @@ import WebSetting from '../components/my/webSetting';
 import QRscanner from '../components/public/QRscanner';
 
 import LockToken from '../components/lock-token/lock-token'
-import Node from '../components/node/node'
 import WatchAddress from '../components/lock-token/watchAddress'
+import DAPPPage from '../components/dapp/DAPP'
+import NewsPage from '../components/dapp/News'
+import WebView from '../components/dapp/WebView'
+import NewsContent from '../components/dapp/NewsContent'
 
 //rely
 import Storage from 'react-native-storage';
@@ -134,6 +132,51 @@ const My = createStackNavigator({
 	}
 });
 
+const DappTopBarPage = createMaterialTopTabNavigator(
+	{
+		DAPP: {
+			screen: DAPPPage,
+			navigationOptions: {
+				tabBarLabel: ({ tintColor, focused }) => (
+					<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>去中心应用</Text>
+				)
+			}
+		},
+		// NEWS: {
+		// 	screen: NewsPage,
+		// 	navigationOptions: {
+		// 		tabBarLabel: ({ tintColor, focused }) => (
+		// 			<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>链新闻</Text>
+		// 		)
+		// 	}
+		// },
+		// FASTNEWS: {
+
+		// },
+		// MARKET: {
+
+		// }
+	},
+	{
+		lazy: true,
+		animationEnabled: true,
+		backBehavior: true,
+		tabBarOptions: {
+			activeTintColor: '#3e9ce9',
+			inactiveTintColor: '#999999',
+			showIcon: true,
+			style: {
+				backgroundColor: '#fff'
+			},
+			indicatorStyle: {
+				opacity: 0
+			},
+			tabStyle: {
+				padding: 0
+			}
+		}
+	}
+)
 const TabBarPage = createBottomTabNavigator(
 	{
 		Assets: {
@@ -145,20 +188,11 @@ const TabBarPage = createBottomTabNavigator(
 				tabBarIcon: ({ focused, tintColor }) => <Icon name="icon-zichan" size={30} color={tintColor} />
 			}
 		},
-		Lock: {
-			screen: LockToken,
+		Dapp: {
+			screen: DappTopBarPage,
 			navigationOptions: {
 				tabBarLabel: ({ tintColor, focused }) => (
-					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('lock.lock')}</Text>
-				),
-				tabBarIcon: ({ focused, tintColor }) => <Icon name="icon-suoding" size={22} color={tintColor} />
-			}
-		},
-		Node: {
-			screen: Node,
-			navigationOptions: {
-				tabBarLabel: ({ tintColor, focused }) => (
-					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('tab.node')}</Text>
+					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('tab.dapp')}</Text>
 				),
 				tabBarIcon: ({ focused, tintColor }) => <MaterialCommunityIcon name="lock-pattern" size={22} color={tintColor} />
 			}
@@ -176,7 +210,7 @@ const TabBarPage = createBottomTabNavigator(
 	{
 		lazy: true,
 		animationEnabled: true,
-		backBehavior: true,
+		backBehavior: Assets,
 		tabBarPosition: 'bottom',
 		tabBarOptions: {
 			activeTintColor: '#3e9ce9',
@@ -212,6 +246,10 @@ const App = createStackNavigator(
 				gesturesEnabled: false
 			}
 		},
+		//DAPP: {screen: DAPPPage}, //all dapp
+		WebView: {screen: WebView}, //self webview
+		LockToken: {screen: LockToken},
+		NewsContent: {screen: NewsContent},
 		CurrencyDetail: CurrencyDetail,
 		Transfer: Transfer,
 		Receipt: {
@@ -287,31 +325,6 @@ const App = createStackNavigator(
 				headerTitle: () => <Text> {I18n.t('lock.watchAddress.addressManager')}</Text>
 			}
 		},
-		// Login: {
-		// 	screen: Login,
-		// 	navigationOptions: {
-		// 		headerTitle: () => <Text>{I18n.t('my.home.lockAccount.loginIn')}</Text>
-		// 	}
-		// },
-		// Lockpositon: {
-		// 	screen: Lockpositon,
-		// 	navigationOptions: {
-		// 		headerTitle: () => <Text>{I18n.t('public.lockedWarehouse')}</Text>
-		// 	}
-		// },
-		// LockAccount: {
-		// 	screen: LockAccount,
-		// 	navigationOptions: {
-		// 		headerTitle: () => <Text>{I18n.t('my.home.lockAccount._title')}</Text>
-		// 	}
-		// },
-		// LogOut: {
-		// 	screen: LogOut,
-		// 	navigationOptions: {
-		// 		headerTitle: () => <Text> {I18n.t('my.home.lockAccount._title1')}</Text>
-		// 	}
-		// },
-		SetGesturePassword,
 		SysLanguage: {
 			screen: SysLanguage,
 			navigationOptions: {

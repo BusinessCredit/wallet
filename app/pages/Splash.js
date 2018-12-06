@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, Animated } from 'react-native';
-import { withNavigation } from 'react-navigation';
-import { I18n } from '../../language/i18n';
+import { withNavigation, StackActions, NavigationActions } from 'react-navigation';
 
 const maxHeight = Dimensions.get('window').height;
 const maxWidth = Dimensions.get('window').width;
@@ -26,10 +25,20 @@ class Splash extends React.Component {
 					key: 'walletInfo'
 				})
 				.then((res) => {
-					this.props.navigation.navigate('Home');
+					//this.props.navigation.navigate('Home');
+					const resetAction = StackActions.reset({
+						index: 0,
+						actions: [NavigationActions.navigate({ routeName: 'Home' })],
+					});
+					this.props.navigation.dispatch(resetAction);
 				})
 				.catch((err) => {
-					this.props.navigation.navigate('Guide');
+					const resetAction = StackActions.reset({
+						index: 0,
+						actions: [NavigationActions.navigate({ routeName: 'Guide' })],
+					});
+					this.props.navigation.dispatch(resetAction);
+					//this.props.navigation.navigate('Guide');
 				});
 		}, 1500);
 	}

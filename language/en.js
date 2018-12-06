@@ -37,7 +37,7 @@ export default {
 	},
 	tab: {
 		assets: 'Assets',
-		node: 'Node',
+		dapp: 'DAPP',
 		my: 'My'
 	},
 	my: {
@@ -94,7 +94,11 @@ export default {
 			noEscalation: 'No upgrade',
 			noUpdate: "Now it's the latest version, no need to update"
 		},
-		webHost: 'Web3 Settings'
+		webHost: 'Web3 Settings',
+		webSetting: {
+			nodeURL: "Web3 node services URL",
+			predefinedURL: "Predefined Web3 node services URL"
+		}
 	},
 	assets: {
 		totalAssets: 'TotalAssets',
@@ -155,6 +159,7 @@ export default {
 		},
 		transfer: {
 			checkAddress: 'Invalid address, please check carefully',
+			checkBalance: 'Invalid balance, ensure balance is correct or you have enough balance',
 			transferInAddress: 'In Address',
 			transferOutAddress: 'To Address'
 		}
@@ -211,7 +216,9 @@ export default {
 		second: 'Second',
 		next: 'Next',
 		back: 'Back',
-		save: 'Save',
+		save: 'Save',		
+		exit: 'Exit',
+		doubleReturn: 'Press back again to exit the app',
 		payDetail: 'Payment details',
 		enterPassword: 'Enter password',
 		transferOutPrompt: 'No rollout is available during the voting period of the priority node.',

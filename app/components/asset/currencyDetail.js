@@ -27,7 +27,7 @@ class Recording extends Component {
 		return (
 			<View style={styles.recordDetail_item}>
 				<Text>{this.props.to.replace(this.props.to.slice('8', '32'), '......')}</Text>
-				<Text>{this.show(this.props.value / 1e18)}</Text>
+				<Text>{this.show(web3.utils.fromWei(this.props.value, 'ether'))}</Text>
 			</View>
 		);
 	}
@@ -76,7 +76,7 @@ class currencyDetail extends Component {
 		const { params } = this.props.navigation.state;
 		this.setState({
 			currencyName: params.title,
-			banlance: params.banlance
+			balance: params.balance
 		});
 		let ContractAddr = params.title + 'ContractAddr';
 		this.setState(
@@ -108,7 +108,7 @@ class currencyDetail extends Component {
 		return (
 			<View style={styles.container}>
 				<View style={styles.balance}>
-					<Text style={[ styles.color_white, styles.balance_text_big ]}>{this.state.banlance}</Text>
+					<Text style={[ styles.color_white, styles.balance_text_big ]}>{this.state.balance}</Text>
 					{/* <Text style={[ styles.color_white, styles.marginTop_20 ]}>市值：*****</Text> */}
 				</View>
 				<View style={{ paddingLeft: 20, paddingTop: 10 }}>
@@ -132,7 +132,8 @@ class currencyDetail extends Component {
 						onPress={() => {
 							this.navigate('Transfer', {
 								navigate: this.navigate,
-								currencyName: this.state.currencyName
+								currencyName: this.state.currencyName,
+								balance: this.state.balance
 							});
 						}}
 					>

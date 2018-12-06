@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, Clipboard, TouchableHighlight, Alert } from 'react-native';
 import { Button, Input } from 'react-native-elements';
-import { withNavigation } from 'react-navigation';
+import { withNavigation, StackActions, NavigationActions } from 'react-navigation';
 import Modal from 'react-native-modalbox';
 import Loading from 'react-native-whc-loading';
 import Toast from 'react-native-easy-toast';
@@ -324,9 +324,18 @@ class WalletInfo extends Component {
 														storage.remove({
 															key: 'walletName'
 														});
+														//remove cache balance
+														storage.remove(
+															{key: 'asset'}
+														);
 														this.refs.loading.close();
-														this.navigate('Guide');
+														const resetAction = StackActions.reset({
+															index: 0,
+															actions: [NavigationActions.navigate({ routeName: 'Guide' })],
+														});
+														this.props.navigation.dispatch(resetAction);
 													} catch (error) {
+														console.log(error)
 														this.refs.loading.close();
 														setTimeout(() => {
 															Alert.alert(null, I18n.t('public.wrongPwd'));
@@ -423,12 +432,12 @@ class WalletInfo extends Component {
 					<View style={styles.privateKeyTitle}>
 						<Text>{I18n.t('assets.walletInfo.exportPrivateKey')}</Text>
 					</View>
-					<TouchableHighlight style={[ styles.spacing, styles.privateKeyWarning ]}>
+					<TouchableHighlight style={[styles.spacing, styles.privateKeyWarning]}>
 						<View>
 							<Text style={styles.warining_text}>{I18n.t('assets.walletInfo.privateKeyWarning')}</Text>
 						</View>
 					</TouchableHighlight>
-					<TouchableHighlight style={[ styles.spacing, styles.privateKeyArea ]}>
+					<TouchableHighlight style={[styles.spacing, styles.privateKeyArea]}>
 						<View>
 							<Text>{this.state.PrivateKey}</Text>
 						</View>

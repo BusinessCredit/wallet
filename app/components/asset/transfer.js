@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Alert, StyleSheet, Dimensions, ScrollView, TouchableHighlight } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, Image, Alert, StyleSheet, Dimensions, ScrollView, TouchableHighlight, Clipboard } from 'react-native';
 import { Input, Slider, Button } from 'react-native-elements';
 import Modal from 'react-native-modalbox';
 import { withNavigation } from 'react-navigation';
@@ -9,6 +8,7 @@ import sendTokens from '../../utils/sendTokens';
 import iterface from '../../utils/trueIterface';
 import { I18n } from '../../../language/i18n';
 import Loading from 'react-native-whc-loading';
+import Toast from 'react-native-easy-toast';
 
 const screen = Dimensions.get('window');
 
@@ -47,7 +47,7 @@ class Transfer extends Component {
 	}
 
 	static navigationOptions = ({ navigation }) => ({
-		headerTitle: I18n.t('assets.currency.transfer'), // 转账
+		headerTitle: I18n.t('assets.currency.transfer') + " " + navigation.state.params.currencyName, // 转账
 		headerRight: (
 			<TouchableHighlight
 				underlayColor={'transparent'}
@@ -84,7 +84,22 @@ class Transfer extends Component {
 		return num;
 	}
 
+	_setClipboardContent = async ( input ) => {
+		Clipboard.setString(input);
+		try {
+			await Clipboard.getString();
+			this.refs.toast.show(I18n.t('public.copySuccess'));
+		} catch (e) {
+			this.refs.toast.show(I18n.t('public.copyFailed'));
+		}
+	};
+
 	componentDidMount() {
+		const { params } = this.props.navigation.state;
+		this.setState({
+			currencyName: params.currencyName,
+			balance: params.balance
+		});
 		web3.eth.getGasPrice().then((res) => {
 			this.setState({
 				gasPrice: res,
@@ -98,7 +113,6 @@ class Transfer extends Component {
 				keystoreV3: res.keystoreV3
 			});
 		});
-		const { params } = this.props.navigation.state;
 		if (params.currencyName == 'ETH') {
 			this.setState(
 				{
@@ -118,22 +132,45 @@ class Transfer extends Component {
 								if (err) {
 									this.refs.loading.close();
 									setTimeout(() => {
-										Alert.alert(null, I18n.t('public.transactionFailed'));
+										Alert.alert(I18n.t('public.transactionFailed'),err.message);
 										// Alert.alert(null, '发布交易失败，请稍后重试！');
 									}, 100);
 									console.log(err);
 								} else {
 									this.refs.loading.close();
 									setTimeout(() => {
-										// 发布交易成功！
-										Alert.alert(null, I18n.t('public.transactionSuccess'), [
-											{
-												text: 'OK',
-												onPress: () => {
-													this.props.navigation.navigate('Home');
+										Alert.alert(
+											I18n.t('public.transactionSuccess'), 
+											'txhash: ' + tx,
+											[
+												{
+													text: "OK",
+													onPress: () => {
+														this.props.navigation.navigate('Home');
+													}
+												},
+												{
+													text: "Copy TxHash",
+													onPress: () => {
+														this._setClipboardContent(tx);
+														this.props.navigation.navigate('Home');
+													}
 												}
-											}
-										]);
+											]
+											);
+										// Alert.alert(null, I18n.t('public.transactionSuccess'), [
+										// 	{
+										// 		text: 'txhash:' + tx,
+										// 		onPress: () => {
+										// 			this.props.navigation.navigate('Home');
+										// 			// this.props.navigate('CurrencyDetail', {
+										// 			// 	title: params.currencyName,
+										// 			// 	balance: params.balance,
+										// 			// 	txhash: tx
+										// 			// });
+										// 		}
+										// 	}
+										// ]);
 									}, 100);
 									console.log(tx, '=======');
 								}
@@ -162,7 +199,7 @@ class Transfer extends Component {
 								if (err) {
 									this.refs.loading.close();
 									setTimeout(() => {
-										Alert.alert(null, I18n.t('public.transactionFailed'));
+										Alert.alert(I18n.t('public.transactionFailed'), err.message);
 										// Alert.alert(null, '发布交易失败，请稍后重试！');
 									}, 100);
 									console.log(err);
@@ -170,14 +207,25 @@ class Transfer extends Component {
 									this.refs.loading.close();
 									setTimeout(() => {
 										// 发布交易成功！
-										Alert.alert(null, I18n.t('public.transactionSuccess'), [
-											{
-												text: 'OK',
-												onPress: () => {
-													this.props.navigation.navigate('Home');
+										Alert.alert(
+											I18n.t('public.transactionSuccess'), 
+											'txhash: ' + tx,
+											[
+												{
+													text: "OK",
+													onPress: () => {
+														this.props.navigation.navigate('Home');
+													}
+												},
+												{
+													text: "Copy TxHash",
+													onPress: () => {
+														this._setClipboardContent(tx);
+														this.props.navigation.navigate('Home');
+													}
 												}
-											}
-										]);
+											]
+											);
 									}, 100);
 									console.log(tx, '=======');
 								}
@@ -197,8 +245,30 @@ class Transfer extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		//validation for qr scanner address
+		const qrAddress = nextProps.navigation.state.params.res
+		if (!web3.utils.isAddress(qrAddress)) {
+			this.setState({
+				toAddressFlag: false,
+				disabledNext: true
+			});
+			Alert.alert(null, I18n.t('assets.transfer.checkAddress'));
+		} else {
+			this.setState(
+				{
+					toAddressFlag: true
+				},
+				() => {
+					if (this.state.toAddressFlag && this.state.amountFlag) {
+						this.setState({
+							disabledNext: false
+						});
+					}
+				}
+			);
+		}
 		this.setState({
-			toAddress: nextProps.navigation.state.params.res
+			toAddress: qrAddress
 		});
 		console.log(nextProps.navigation.state.params.res);
 	}
@@ -208,15 +278,6 @@ class Transfer extends Component {
 			<View style={styles.container}>
 				<Input
 					placeholder={I18n.t('assets.currency.receiptAddr')}
-					//"收款人钱包地址"
-					//     <Icon
-					//         name='user'
-					//         size={25}
-					//         onPress={() => {
-					//             alert('联系人')
-					//         }}
-					//     />
-					// }
 					value={this.state.toAddress.length > 0 ? this.state.toAddress : null}
 					onChangeText={(toAddress) => this.setState({ toAddress })}
 					onEndEditing={(event) => {
@@ -226,7 +287,6 @@ class Transfer extends Component {
 								disabledNext: true
 							});
 							Alert.alert(null, I18n.t('assets.transfer.checkAddress'));
-							// Alert.alert(null, '地址无效，请仔细检查！');
 						} else {
 							this.setState(
 								{
@@ -249,7 +309,7 @@ class Transfer extends Component {
 					// "转账金额"
 					onChangeText={(amount) => {
 						this.setState({ amount });
-						if (amount) {
+						if (!isNaN(Number(amount)) && Number(amount) <= this.state.balance) {
 							this.setState(
 								{
 									amountFlag: true
@@ -267,6 +327,7 @@ class Transfer extends Component {
 								amountFlag: false,
 								disabledNext: true
 							});
+							Alert.alert(null, I18n.t('assets.transfer.checkBalance'));
 						}
 					}}
 					inputContainerStyle={styles.inputContainerStyle}
@@ -278,7 +339,7 @@ class Transfer extends Component {
 					inputContainerStyle={styles.inputContainerStyle}
 				/>
 				<Text style={styles.minerCosts_text}>
-					{I18n.t('assets.currency.transferFee')}
+					{I18n.t('assets.currency.transferFee')}≈{this.show(this.state.cost)}eth
 					{/* 矿工费用 */}
 				</Text>
 				<Slider
@@ -288,12 +349,12 @@ class Transfer extends Component {
 					}}
 					onSlidingComplete={(res) => {
 						this.setState({
-							gasPrice: web3.utils.toWei(res.toFixed(6), 'ether') / this.state.gas
+							gasPrice: (web3.utils.toWei(res.toFixed(6), 'ether') / this.state.gas).toFixed(0)
 						});
 					}}
 					minimumTrackTintColor="#528bf7"
 					thumbTintColor="#528bf7"
-					minimumValue={0.0}
+					minimumValue={0.00001}
 					step={0.0000001}
 					maximumValue={0.00251999}
 				/>
@@ -302,7 +363,9 @@ class Transfer extends Component {
 						{I18n.t('assets.currency.transferSpeedSlow')}
 						{/* 慢 */}
 					</Text>
-					<Text style={styles.textAlign}>{this.show(this.state.cost)}ether</Text>
+					<Text style={styles.textAlign}>
+						gasPrice: {web3.utils.fromWei(this.state.gasPrice.toString(), 'gwei')} gwei
+					</Text>
 					<Text>
 						{I18n.t('assets.currency.transferSpeedFast')}
 						{/* 快 */}
@@ -321,11 +384,13 @@ class Transfer extends Component {
 					/>
 					<Loading ref="loading" />
 				</View>
+				<Toast ref="toast" position="center" />
 				<Modal
 					style={styles.modal}
 					position={'bottom'}
 					coverScreen={true}
 					ref={'transferDetail'}
+					isOpen={this.state.huhu}
 					swipeArea={20}
 				>
 					<ScrollView>
@@ -477,6 +542,9 @@ const styles = StyleSheet.create({
 		color: '#999',
 		fontSize: 16
 	},
+	gasPrice_text:{
+		fontSize: 12
+	},
 	gasPrice: {
 		flexDirection: 'row',
 		justifyContent: 'space-between'
@@ -492,7 +560,7 @@ const styles = StyleSheet.create({
 		borderRadius: 30
 	},
 	modal: {
-		height: screen.height * 0.5
+		height: screen.height * 0.6
 	},
 	paymentDetails_title: {
 		width: screen.width,
