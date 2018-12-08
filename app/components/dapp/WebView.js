@@ -5,6 +5,8 @@ import { StyleSheet, WebView as RNWebView,
   TouchableHighlight, Image,
   BackHandler
  } from 'react-native';
+
+import WebViewAndroid from 'react-native-webview-android'
 import { withNavigation, Header } from 'react-navigation';
 import MaterialCommunityIcon from 'react-native-vector-icons/dist/MaterialCommunityIcons';
 
@@ -81,9 +83,14 @@ class WebView extends React.Component {
   }
 
   render() {
+    let NewWebView = RNWebView
+    if (Platform.OS === 'android') {
+      NewWebView = WebViewAndroid
+    }
+
     return (
       <View style={styles.container}>
-        <RNWebView
+        <NewWebView
           //onLoad={() => this.hideSpinner()}
           style={styles.webview}
           source={{ uri: this.state.uri }}
