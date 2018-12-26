@@ -13,7 +13,10 @@ import {
 	Animated,
 	BackHandler,
 	TouchableOpacity,
+	Platform
 } from 'react-native';
+
+import JPushModule from 'jpush-react-native'
 
 import { connect } from 'react-redux';
 import actions from '../../store/action/walletInfo';
@@ -23,7 +26,7 @@ import { I18n } from '../../../language/i18n';
 import { checkVersion } from '../../api/index';
 import versionCompare from '../../utils/versionCompare'
 
-import {withNavigation} from 'react-navigation'
+import { withNavigation } from 'react-navigation'
 
 import { readStorage, writeStorage } from '../../db/db'
 var DeviceInfo = require('react-native-device-info');
@@ -125,10 +128,11 @@ class Assets extends Component {
 	onBackButtonPressAndroid = () => {
 		this.state.backClickCount == 1 ? BackHandler.exitApp() : this._spring();
 		return true;
-  };
+	};
 	componentWillUnmount() {
+		this._remove_jpush && this._remove_jpush()
 		this._didFocusSubscription && this._didFocusSubscription.remove();
-    this._willBlurSubscription && this._willBlurSubscription.remove();
+		this._willBlurSubscription && this._willBlurSubscription.remove();
 	}
 
 	show(num) {
@@ -179,22 +183,6 @@ class Assets extends Component {
 			}
 		);
 
-		// getBalance(
-		// 	iterface,
-		// 	this.state.walletAddress,
-		// 	store.getState().contractAddr.DAECContractAddr,
-		// 	(daec_balance) => {
-		// 		daec_balance = this.show(daec_balance);
-		// 		this.setState({ daec_balance });
-
-		// 		this.asset = {
-		// 			...this.asset,
-		// 			daec_balance: daec_balance
-		// 		}
-		// 		writeStorage("asset", this.asset, e => console.log(e))
-		// 	}
-		// );
-
 		this.updateWalletName();
 
 		setTimeout(() => {
@@ -204,10 +192,66 @@ class Assets extends Component {
 		}, 1000);
 	}
 
+	_jpush_event_openNotification(){
+		//new event only, nav to that page
+		this.props.navigation.navigate(
+			"BCACNEWS"
+		)
+	}
+
+	_init_jpush() {
+		if (Platform.OS === 'android') {
+			JPushModule.initPush()
+			JPushModule.notifyJSDidLoad(resultCode => {
+				if (resultCode === 0) {
+				}
+			})
+		} else {
+			JPushModule.setupPush()
+		}
+
+		this.receiveCustomMsgListener = map => {
+			this.setState({
+				pushMsg: map.content
+			})
+			console.log('extras: ' + map.extras)
+		}
+
+		JPushModule.addReceiveCustomMsgListener(this.receiveCustomMsgListener)
+		this.receiveNotificationListener = map => {
+			console.log('alertContent: ' + map.alertContent)
+			console.log('extras: ' + map.extras)
+		}
+		JPushModule.addReceiveNotificationListener(this.receiveNotificationListener)
+
+		this.openNotificationListener = map => {
+			console.log('Opening notification!')
+			console.log('map.extra: ' + map.extras)
+			this._jpush_event_openNotification()
+		}
+		JPushModule.addReceiveOpenNotificationListener(this.openNotificationListener)
+
+		this.getRegistrationIdListener = registrationId => {
+			console.log('Device register succeed, registrationId ' + registrationId)
+		}
+		JPushModule.addGetRegistrationIdListener(this.getRegistrationIdListener)
+	}
+
+	_remove_jpush(){
+		JPushModule.removeReceiveCustomMsgListener(this.receiveCustomMsgListener)
+		JPushModule.removeReceiveNotificationListener(this.receiveNotificationListener)
+		JPushModule.removeReceiveOpenNotificationListener(this.openNotificationListener)
+		JPushModule.removeGetRegistrationIdListener(this.getRegistrationIdListener)
+		console.log('Will clear all notifications')
+		JPushModule.clearAllNotifications()
+	}
+
 	componentDidMount() {
 		this._willBlurSubscription = this.props.navigation.addListener('willBlur', payload =>
 			BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
 		);
+
+		this._init_jpush()
 		storage
 			.load({
 				key: 'walletInfo'
@@ -340,7 +384,7 @@ class Assets extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.navigation.state.params && nextProps.navigation.state.params.refresh){
+		if (nextProps.navigation.state.params && nextProps.navigation.state.params.refresh) {
 			this.getAllBalance()
 		}
 	}
