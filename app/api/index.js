@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 checkVersionUrl = "http://www.bcachain.org/release.json"
+bcacNewsUrl="http://www.bcachain.org/index.php?c=api&a=news"
 
 //获取eth交易记录
 const getTransactionRecord = (walletAddress, contractaddress) => {
@@ -46,4 +47,8 @@ const checkVersion = () => {
 	return axios.get(checkVersionUrl, config);
 };
 
-export { getTransactionRecord, getERC20TransactionRecord, checkVersion };
+const getBCACNews = () => {
+	var config = {	headers: {'Content-Type': 'application/json','Cache-Control' : 'no-cache'}, timeout: 1000*20};
+	return axios.get(bcacNewsUrl, config);
+}
+export { getTransactionRecord, getERC20TransactionRecord, checkVersion, getBCACNews };

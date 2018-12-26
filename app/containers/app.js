@@ -35,6 +35,7 @@ import LockToken from '../components/lock-token/lock-token'
 import WatchAddress from '../components/lock-token/watchAddress'
 import DAPPPage from '../components/dapp/DAPP'
 import NewsPage from '../components/dapp/News'
+import BCACNewsPage from '../components/dapp/BCACNews'
 import WebView from '../components/dapp/WebView'
 import NewsContent from '../components/dapp/NewsContent'
 
@@ -139,6 +140,14 @@ const DappTopBarPage = createMaterialTopTabNavigator(
 			navigationOptions: {
 				tabBarLabel: ({ tintColor, focused }) => (
 					<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>去中心应用</Text>
+				)
+			}
+		},
+		BCACNEWS: {
+			screen: BCACNewsPage,
+			navigationOptions: {
+				tabBarLabel: ({ tintColor, focused }) => (
+					<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>商信链新闻</Text>
 				)
 			}
 		},
