@@ -21,7 +21,7 @@ class DAPP extends Component {
 
   onGotoMarketSystem(){
     this.props.navigation.navigate("WebView", {
-      uri: "https://mall.bapuwind.com",
+      uri: "https://www.cryptokitties.co",
       title: "圆团商城",
       //shareMessage: (url)=> "圆团商城想要和你分享一个链接: "
     })

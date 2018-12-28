@@ -1,5 +1,5 @@
 const initState = {
-	eth_banlance: 0,
+	eth_balance: 0,
 	bcac_balance: 0,
 	wallet_address: null
 };
@@ -9,7 +9,7 @@ export default function(state = initState, action) {
 		case 'WALLETINFO':
 			return {
 				...state,
-				eth_banlance: action.eth_banlance,
+				eth_balance: action.eth_balance,
 				bcac_balance: action.bcac_balance,
 				wallet_address: action.wallet_address
 			};

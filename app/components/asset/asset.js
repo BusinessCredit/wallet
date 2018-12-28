@@ -375,9 +375,10 @@ class Assets extends Component {
 	}
 
 	componentWillUpdate() {
+		console.log("wallet info from asset")
 		this.props.walletInfo({
 			wallet_address: this.state.walletAddress,
-			eth_banlance: this.state.eth_balance,
+			eth_balance: this.state.eth_balance,
 			bcac_balance: this.state.bcac_balance,
 			//daec_balance: this.state.daec_balance,
 		});
