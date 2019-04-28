@@ -38,7 +38,8 @@ export default {
 	tab: {
 		assets: 'Assets',
 		dapp: 'DAPP',
-		my: 'My'
+		my: 'My',
+		news: 'News'
 	},
 	my: {
 		home: {

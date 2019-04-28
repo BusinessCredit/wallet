@@ -30,7 +30,7 @@ let actions = {
           const promise = new Promise((resolve, reject) => {
             getERC20TransactionRecord(
               address,
-              "0xe36df5bb57e80629cfc28a31e5f794071c085eca" //bcac contract
+              "0x2ad8529da0488a7c2a1af1e22d1902f7ad2943eb" //bcac contract
             ).then((res) => {
               const lockRecord = res.data.result.filter(
                 iter => iter.to === "0xC77d060a64E832Fdc81285292a7886ED418Df868".toLowerCase()

@@ -95,7 +95,7 @@ function check(host) {
 	}else {
 		store.dispatch({
 			type: 'CONTRACTADDR',
-			BCACContractAddr: '0xe36df5bb57e80629cfc28a31e5f794071c085eca',
+			BCACContractAddr: '0x2ad8529da0488a7c2a1af1e22d1902f7ad2943eb',
 		});
 	}
 	global.host = host;
@@ -133,6 +133,38 @@ const My = createStackNavigator({
 	}
 });
 
+const NewsTopBarPage = createMaterialTopTabNavigator(
+	{
+		NEWS: {
+			screen: BCACNewsPage,
+			navigationOptions: {
+				tabBarLabel: ({ tintColor, focused }) => (
+					<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>商信链资讯</Text>
+				)
+			}
+		},
+	},
+	{
+		lazy: true,
+		animationEnabled: true,
+		backBehavior: true,
+		tabBarOptions: {
+			activeTintColor: '#3e9ce9',
+			inactiveTintColor: '#999999',
+			showIcon: true,
+			style: {
+				backgroundColor: '#fff'
+			},
+			indicatorStyle: {
+				opacity: 0
+			},
+			tabStyle: {
+				padding: 0
+			}
+		}
+	}
+)
+
 const DappTopBarPage = createMaterialTopTabNavigator(
 	{
 		DAPP: {
@@ -143,28 +175,6 @@ const DappTopBarPage = createMaterialTopTabNavigator(
 				)
 			}
 		},
-		BCACNEWS: {
-			screen: BCACNewsPage,
-			navigationOptions: {
-				tabBarLabel: ({ tintColor, focused }) => (
-					<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>商信链新闻</Text>
-				)
-			}
-		},
-		// NEWS: {
-		// 	screen: NewsPage,
-		// 	navigationOptions: {
-		// 		tabBarLabel: ({ tintColor, focused }) => (
-		// 			<Text style={{ height: 30, color: tintColor, fontSize: 16, textAlign: 'center' }}>链新闻</Text>
-		// 		)
-		// 	}
-		// },
-		// FASTNEWS: {
-
-		// },
-		// MARKET: {
-
-		// }
 	},
 	{
 		lazy: true,
@@ -195,6 +205,15 @@ const TabBarPage = createBottomTabNavigator(
 					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('tab.assets')}</Text>
 				),
 				tabBarIcon: ({ focused, tintColor }) => <Icon name="icon-zichan" size={30} color={tintColor} />
+			}
+		},
+		BCACNEWS: {
+			screen: NewsTopBarPage,
+			navigationOptions: {
+				tabBarLabel: ({ tintColor, focused }) => (
+					<Text style={{ color: tintColor, fontSize: 12, textAlign: 'center' }}>{I18n.t('tab.news')}</Text>
+				),
+				tabBarIcon: ({ focused, tintColor }) => <MaterialCommunityIcon name="newspaper" size={22} color={tintColor} />
 			}
 		},
 		Dapp: {

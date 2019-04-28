@@ -35,7 +35,8 @@ export default {
 	tab: {
 		assets: '资产',
 		dapp: '应用',
-		my: '我的'
+		my: '我的',
+		news: '资讯'
 	},
 	my: {
 		home: {

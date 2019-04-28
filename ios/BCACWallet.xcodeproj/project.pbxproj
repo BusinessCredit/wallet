@@ -63,13 +63,11 @@
 		6E4E700EA52D410E97521150 /* libRNCookieManagerIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A18A962E71422C89730BEE /* libRNCookieManagerIOS.a */; };
 		72B84079DA8B4E24BA4F1184 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A54F7E1D7C54CBA8519689E /* CFNetwork.framework */; };
 		8180E353D4FA41AA8E1FD8D8 /* libUdpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E671721086408D989986E9 /* libUdpSockets.a */; };
-		81FC6CEB7D1A44939F14313E /* libRCTJPushModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3403C2D9ED148A39E1F590B /* libRCTJPushModule.a */; };
 		822695B9B6D84346B65F6144 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27BC117EFA8747EAA3326AF9 /* MaterialCommunityIcons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		83A6E6EEB06A4131967F27A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F83BE6F080546659A83879C /* CoreGraphics.framework */; };
 		887E74093A494077AD5AD4FC /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBB140AAE49D47D49700DC96 /* FontAwesome.ttf */; };
 		97B6FC9052214255BE7C3C0B /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 25E9352D6C944CDCB07CA98D /* SimpleLineIcons.ttf */; };
-		9A861C8A82624F2AB2BFF264 /* libRCTJCoreModule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2A9B26387147439FD5A4DF /* libRCTJCoreModule.a */; };
 		A41D5793BB5A4CE28290E3C0 /* libRNRandomBytes-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2884BE4BE71345648566C18A /* libRNRandomBytes-tvOS.a */; };
 		A652BE3F1DAA4F17BC13D48B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C9C21B73CD46979764B586 /* Security.framework */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -251,20 +249,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = UdpSockets;
-		};
-		0EEFE3E621CB5F4C00291AFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E0FE41E4C5674852B85500F3 /* RCTJCoreModule.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6212E9B41F3990DC00BDF51A;
-			remoteInfo = RCTJCoreModule;
-		};
-		0EEFE3E921CB5F4C00291AFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 326BA7DD40BE4318B35F2FA6 /* RCTJPushModule.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6280980A1CEDC407000D3A81;
-			remoteInfo = RCTJPushModule;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -538,7 +522,6 @@
 		2D02E4901E0B4A5D006451C7 /* BCACWallet-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BCACWallet-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ED9ECEBFA204D8BB4DD78FD /* RNI18n.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
-		326BA7DD40BE4318B35F2FA6 /* RCTJPushModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJPushModule.xcodeproj; path = "../node_modules/jpush-react-native/ios/RCTJPushModule.xcodeproj"; sourceTree = "<group>"; };
 		38E20A7391D847FEA35E6B26 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		4439A3B857D44AF6BEB9D97D /* libresolv.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		46C332B8CD1B4E26B4D03EED /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
@@ -583,7 +566,6 @@
 		D3403C2D9ED148A39E1F590B /* libRCTJPushModule.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTJPushModule.a; sourceTree = "<group>"; };
 		D53B72AE1ED44FEA80D5C531 /* libRNCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCamera.a; sourceTree = "<group>"; };
 		D8D4B97952CE4A63BCDAFE67 /* CoreFoundation.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		E0FE41E4C5674852B85500F3 /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJCoreModule.xcodeproj; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; };
 		F7E925DA6FFE43EC8E1A0142 /* RNOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOS.xcodeproj; path = "../node_modules/react-native-os/ios/RNOS.xcodeproj"; sourceTree = "<group>"; };
 		FBB140AAE49D47D49700DC96 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -628,8 +610,6 @@
 				8180E353D4FA41AA8E1FD8D8 /* libUdpSockets.a in Frameworks */,
 				5A5F6142D786420BB84D15F7 /* libRNVectorIcons.a in Frameworks */,
 				57DE4139AD6D4BD58DD22B99 /* libRNFetchBlob.a in Frameworks */,
-				9A861C8A82624F2AB2BFF264 /* libRCTJCoreModule.a in Frameworks */,
-				81FC6CEB7D1A44939F14313E /* libRCTJPushModule.a in Frameworks */,
 				388B033EF9FC4987ABBE4A7B /* libz.tbd in Frameworks */,
 				E4D082BACAEF4CEE854DDA1D /* UserNotifications.framework in Frameworks */,
 				F8791764C658479DA5365CD3 /* CoreTelephony.framework in Frameworks */,
@@ -876,22 +856,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0EEFE3E121CB5F4C00291AFD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0EEFE3E721CB5F4C00291AFD /* libRCTJCoreModule.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		0EEFE3E321CB5F4C00291AFD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0EEFE3EA21CB5F4C00291AFD /* libRCTJPushModule.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,8 +999,6 @@
 				59AAD50AEB254274BA89915E /* UdpSockets.xcodeproj */,
 				CEB77550095847DB93B1F18B /* RNVectorIcons.xcodeproj */,
 				4E17D427C91741DA9650F332 /* RNFetchBlob.xcodeproj */,
-				E0FE41E4C5674852B85500F3 /* RCTJCoreModule.xcodeproj */,
-				326BA7DD40BE4318B35F2FA6 /* RCTJPushModule.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1175,11 +1137,11 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = K388DEAHCQ;
+						DevelopmentTeam = 3WGSYWK6K2;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -1229,14 +1191,6 @@
 				{
 					ProductGroup = 00C302BC1ABCB91800DB3ED1 /* Products */;
 					ProjectRef = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
-				},
-				{
-					ProductGroup = 0EEFE3E121CB5F4C00291AFD /* Products */;
-					ProjectRef = E0FE41E4C5674852B85500F3 /* RCTJCoreModule.xcodeproj */;
-				},
-				{
-					ProductGroup = 0EEFE3E321CB5F4C00291AFD /* Products */;
-					ProjectRef = 326BA7DD40BE4318B35F2FA6 /* RCTJPushModule.xcodeproj */;
 				},
 				{
 					ProductGroup = 78C398B11ACF4ADC00677621 /* Products */;
@@ -1489,20 +1443,6 @@
 			fileType = archive.ar;
 			path = libUdpSockets.a;
 			remoteRef = 0E3FE8A0213F5F9700B10078 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0EEFE3E721CB5F4C00291AFD /* libRCTJCoreModule.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTJCoreModule.a;
-			remoteRef = 0EEFE3E621CB5F4C00291AFD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0EEFE3EA21CB5F4C00291AFD /* libRCTJPushModule.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTJPushModule.a;
-			remoteRef = 0EEFE3E921CB5F4C00291AFD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		139105C11AF99BAD00B5F7CC /* libRCTSettings.a */ = {
@@ -1996,11 +1936,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BCACWallet/BCACWallet.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = K388DEAHCQ;
+				DEVELOPMENT_TEAM = 3WGSYWK6K2;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
@@ -2028,8 +1967,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = BCACWallet;
-				PROVISIONING_PROFILE = "8d53d0d7-7d38-4030-be18-41532cc1cc98";
-				PROVISIONING_PROFILE_SPECIFIER = qianbao;
+				PROVISIONING_PROFILE = "0074cad5-c86c-4e44-aca9-3c0d82d3fc12";
+				PROVISIONING_PROFILE_SPECIFIER = BCACWallet;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -2038,10 +1977,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = BCACWallet/BCACWallet.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K388DEAHCQ;
+				DEVELOPMENT_TEAM = 3WGSYWK6K2;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-randombytes",
@@ -2069,8 +2007,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = BCACWallet;
-				PROVISIONING_PROFILE = "8d53d0d7-7d38-4030-be18-41532cc1cc98";
-				PROVISIONING_PROFILE_SPECIFIER = qianbao;
+				PROVISIONING_PROFILE = "0074cad5-c86c-4e44-aca9-3c0d82d3fc12";
+				PROVISIONING_PROFILE_SPECIFIER = BCACWallet;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

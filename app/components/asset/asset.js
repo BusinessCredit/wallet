@@ -16,8 +16,6 @@ import {
 	Platform
 } from 'react-native';
 
-import JPushModule from 'jpush-react-native'
-
 import { connect } from 'react-redux';
 import actions from '../../store/action/walletInfo';
 import getBalance from '../../utils/addTokens';
@@ -130,7 +128,7 @@ class Assets extends Component {
 		return true;
 	};
 	componentWillUnmount() {
-		this._remove_jpush && this._remove_jpush()
+		//this._remove_jpush && this._remove_jpush()
 		this._didFocusSubscription && this._didFocusSubscription.remove();
 		this._willBlurSubscription && this._willBlurSubscription.remove();
 	}
@@ -192,66 +190,66 @@ class Assets extends Component {
 		}, 1000);
 	}
 
-	_jpush_event_openNotification(){
-		//new event only, nav to that page
-		this.props.navigation.navigate(
-			"BCACNEWS"
-		)
-	}
+	// _jpush_event_openNotification(){
+	// 	//new event only, nav to that page
+	// 	this.props.navigation.navigate(
+	// 		"BCACNEWS"
+	// 	)
+	// }
 
-	_init_jpush() {
-		if (Platform.OS === 'android') {
-			JPushModule.initPush()
-			JPushModule.notifyJSDidLoad(resultCode => {
-				if (resultCode === 0) {
-				}
-			})
-		} else {
-			JPushModule.setupPush()
-		}
+	// _init_jpush() {
+	// 	if (Platform.OS === 'android') {
+	// 		JPushModule.initPush()
+	// 		JPushModule.notifyJSDidLoad(resultCode => {
+	// 			if (resultCode === 0) {
+	// 			}
+	// 		})
+	// 	} else {
+	// 		JPushModule.setupPush()
+	// 	}
 
-		this.receiveCustomMsgListener = map => {
-			this.setState({
-				pushMsg: map.content
-			})
-			console.log('extras: ' + map.extras)
-		}
+	// 	this.receiveCustomMsgListener = map => {
+	// 		this.setState({
+	// 			pushMsg: map.content
+	// 		})
+	// 		console.log('extras: ' + map.extras)
+	// 	}
 
-		JPushModule.addReceiveCustomMsgListener(this.receiveCustomMsgListener)
-		this.receiveNotificationListener = map => {
-			console.log('alertContent: ' + map.alertContent)
-			console.log('extras: ' + map.extras)
-		}
-		JPushModule.addReceiveNotificationListener(this.receiveNotificationListener)
+	// 	JPushModule.addReceiveCustomMsgListener(this.receiveCustomMsgListener)
+	// 	this.receiveNotificationListener = map => {
+	// 		console.log('alertContent: ' + map.alertContent)
+	// 		console.log('extras: ' + map.extras)
+	// 	}
+	// 	JPushModule.addReceiveNotificationListener(this.receiveNotificationListener)
 
-		this.openNotificationListener = map => {
-			console.log('Opening notification!')
-			console.log('map.extra: ' + map.extras)
-			this._jpush_event_openNotification()
-		}
-		JPushModule.addReceiveOpenNotificationListener(this.openNotificationListener)
+	// 	this.openNotificationListener = map => {
+	// 		console.log('Opening notification!')
+	// 		console.log('map.extra: ' + map.extras)
+	// 		this._jpush_event_openNotification()
+	// 	}
+	// 	JPushModule.addReceiveOpenNotificationListener(this.openNotificationListener)
 
-		this.getRegistrationIdListener = registrationId => {
-			console.log('Device register succeed, registrationId ' + registrationId)
-		}
-		JPushModule.addGetRegistrationIdListener(this.getRegistrationIdListener)
-	}
+	// 	this.getRegistrationIdListener = registrationId => {
+	// 		console.log('Device register succeed, registrationId ' + registrationId)
+	// 	}
+	// 	JPushModule.addGetRegistrationIdListener(this.getRegistrationIdListener)
+	// }
 
-	_remove_jpush(){
-		JPushModule.removeReceiveCustomMsgListener(this.receiveCustomMsgListener)
-		JPushModule.removeReceiveNotificationListener(this.receiveNotificationListener)
-		JPushModule.removeReceiveOpenNotificationListener(this.openNotificationListener)
-		JPushModule.removeGetRegistrationIdListener(this.getRegistrationIdListener)
-		console.log('Will clear all notifications')
-		JPushModule.clearAllNotifications()
-	}
+	// _remove_jpush(){
+	// 	JPushModule.removeReceiveCustomMsgListener(this.receiveCustomMsgListener)
+	// 	JPushModule.removeReceiveNotificationListener(this.receiveNotificationListener)
+	// 	JPushModule.removeReceiveOpenNotificationListener(this.openNotificationListener)
+	// 	JPushModule.removeGetRegistrationIdListener(this.getRegistrationIdListener)
+	// 	console.log('Will clear all notifications')
+	// 	JPushModule.clearAllNotifications()
+	// }
 
 	componentDidMount() {
 		this._willBlurSubscription = this.props.navigation.addListener('willBlur', payload =>
 			BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPressAndroid)
 		);
 
-		this._init_jpush()
+		//this._init_jpush()
 		storage
 			.load({
 				key: 'walletInfo'

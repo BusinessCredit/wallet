@@ -122,18 +122,6 @@ class LockToken extends React.Component {
 				{
 					<View style={styles.bottom_fun}>
 						<Text
-							style={[styles.bottom_fun_item, styles.bottom_fun_item_transfer]}
-							onPress={() => {
-								this.navigate('Transfer', {
-									navigate: this.navigate,
-									currencyName: "BCAC",
-									toAddress: "0xC77d060a64E832Fdc81285292a7886ED418Df868"
-								});
-							}}
-						>
-							{I18n.t('lock.lockToken')}
-						</Text>
-						<Text
 							style={[styles.bottom_fun_item, styles.bottom_fun_item_receipt]}
 							onPress={() => {
 								this.navigate('WatchAddress');
