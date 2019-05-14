@@ -15,25 +15,4 @@ public class MainActivity extends ReactActivity {
     protected String getMainComponentName() {
         return "BCACWallet";
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.i("MainActivity", "onCreate executed!");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-}
 }

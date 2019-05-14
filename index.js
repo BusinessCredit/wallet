@@ -12,6 +12,7 @@ import './global';
 import './shim';
 import crypto from 'crypto';
 import Root from './app/root';
+import './arrayPolyfills';
 
 YellowBox.ignoreWarnings([ 
   'Warning: isMounted(...) is deprecated', 
