@@ -12,7 +12,6 @@ export class ExportMnemonic extends Component {
 		super(props);
 		this.state = {
 			Mnemonic: ' ',
-			// backupBtnText: '请备份您的助记词',
 			backupBtnText: I18n.t('assets.mnemonic.backUpMnemonic'),
 			backupBtnOpacity: 0.6,
 			onPress: null,
